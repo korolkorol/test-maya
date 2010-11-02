@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#jQuery
+cat js/jquery.js > hb.tmp
+cat js/jquery.dimensions.js >> hb.tmp
+cat js/ui.core.js >> hb.tmp
+cat tabs3/ui.tabs.js >> hb.tmp
+cat js/jquery.form.js >> hb.tmp
+cat js/validate/lib/jquery.metadata.js >> hb.tmp
+cat js/validate/jquery.validate.js >> hb.tmp
+cat js/jqModal.js >> hb.tmp
+#SWFUpload
+cat swfupload/swfupload.js >> hb.tmp
+cat swfupload/swfupload.graceful_degradation.js >> hb.tmp
+cat swfupload/handlers.js >> hb.tmp
+cat swfupload/fileprogress.js >> hb.tmp
+#misc
+cat js/parseuri.js >> hb.tmp
+cat captcha/captcha.js >> hb.tmp
+#history
+cat history/json2.js >> hb.tmp
+cat history/rsh.js >> hb.tmp
+
+#compress it
+cd js
+java -jar yuicompressor-2.3.4.jar --type js ../hb.tmp -o hb.js
+gzip -c hb.js > hb.jgz
+rm ../hb.tmp
+
+
